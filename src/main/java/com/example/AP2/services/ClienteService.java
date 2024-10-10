@@ -21,6 +21,10 @@ public class ClienteService {
         return clienteRepository.getClientesRepository();
     }
 
+    public Cliente getClienteByIdService(int id) {
+        return clienteRepository.getClienteByIdRepository(id);
+    }
+
     public void setClienteService(Cliente cliente) {
         clienteRepository.setClientesRepository(cliente);
     }

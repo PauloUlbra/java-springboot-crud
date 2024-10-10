@@ -10,6 +10,16 @@ import java.util.List;
 public class ClienteRepository {
     private List<Cliente> clientes = new ArrayList<>();
 
+    // Pegar Cliente pelo ID
+    public Cliente getClienteByIdRepository(int id) {
+        for (Cliente cliente : clientes) {
+            if (cliente.getId() == id) {
+                return cliente;
+            }
+        }
+        return null;
+    }
+
     //GET
     public List<Cliente> getClientesRepository() {
         return clientes;

@@ -21,6 +21,10 @@ public class ClienteController {
     public List<Cliente> getClientesController() {
         return clienteService.listarClienteService();
     }
+    @GetMapping("/clientes/{id}")
+    public Cliente getClienteByIdController(@PathVariable int id) {
+        return clienteService.getClienteByIdService(id);
+    }
 
     @PostMapping("/clientes")
     public Cliente setClienteController(@RequestBody Cliente cliente) {

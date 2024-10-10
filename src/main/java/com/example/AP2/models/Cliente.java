@@ -14,4 +14,12 @@ public class Cliente {
     private String nome;
     private int idade;
     private String profissao;
+    private static int contador = 0;
+
+    public Cliente(){
+        contador++;
+        this.id = contador;
+    }
+
 }
+
