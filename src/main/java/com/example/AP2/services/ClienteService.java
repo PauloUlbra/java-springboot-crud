@@ -28,5 +28,8 @@ public class ClienteService {
         clienteRepository.deleteClienteRepository(id);
     }
 
+    public void updateClienteService(Cliente cliente, int id) {
+        clienteRepository.updateClienteRepository(cliente, id);}
+
 
 }

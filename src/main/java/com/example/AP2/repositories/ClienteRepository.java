@@ -28,5 +28,8 @@ public class ClienteRepository {
     }
 
     //PUT
-
+    public void updateClienteRepository(Cliente cliente, int id) {
+         cliente = this.clientes.stream().filter(i -> i.getId() == id).findFirst().get();
+        this.clientes.set(id, cliente);
+    }
 }
