@@ -34,9 +34,8 @@ public class ClienteController {
     }
 
     @PutMapping("/clientes/{id}")
-    public Cliente updateClienteController(@RequestBody Cliente cliente, @PathVariable int id) {
+    public void updateClienteController(@RequestBody Cliente cliente, @PathVariable int id) {
         clienteService.updateClienteService(cliente, id);
-//pesquisar metodo que devolve index de filter
-        return cliente;
     }
+    //pesquisar metodo que devolve index de filter
 }

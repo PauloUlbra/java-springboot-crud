@@ -7,11 +7,18 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@AllArgsConstructor
+//@AllArgsConstructor
 public class Cliente {
-
-    private int id = 1;
+    public static int ultimoId = 1;
+    private int id;
     private String nome;
     private int idade;
     private String profissao;
+
+    public Cliente(String nome, int idade, String profissao) {
+        this.id = ultimoId++;
+        this.nome = nome;
+        this.idade = idade;
+        this.profissao = profissao;
+    }
 }
