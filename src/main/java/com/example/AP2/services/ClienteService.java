@@ -29,7 +29,6 @@ public class ClienteService {
     }
 
     public void updateClienteService(Cliente cliente, int id) {
-        clienteRepository.updateClienteRepository(cliente, id);}
-
-
+        clienteRepository.updateClienteRepository(cliente, id);
+    }
 }
