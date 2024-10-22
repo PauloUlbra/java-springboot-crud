@@ -21,6 +21,10 @@ public class ClienteService {
         return clienteRepository.getClientesRepository();
     }
 
+    public Cliente listarClientesPelaIdService(int id){return clienteRepository.getClientesPelaIdRepository(id);}
+
+    public List<Cliente> listarClientesPelaIdadeService(int idade){return clienteRepository.getClientesPelaIdadeRepository(idade);}
+
     public void setClienteService(Cliente cliente) {
         clienteRepository.setClientesRepository(cliente);
     }
@@ -28,7 +32,7 @@ public class ClienteService {
         clienteRepository.deleteClienteRepository(id);
     }
 
-    public void updateClienteService(Cliente cliente, int id) {
-        clienteRepository.updateClienteRepository(cliente, id);
+    public Cliente updateClienteService(Cliente cliente, int id) {
+        return clienteRepository.updateClienteRepository(id, cliente);
     }
 }

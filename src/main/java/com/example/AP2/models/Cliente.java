@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-//@AllArgsConstructor
+@AllArgsConstructor
 public class Cliente {
     public static int ultimoId = 1;
     private int id;
@@ -15,7 +15,7 @@ public class Cliente {
     private int idade;
     private String profissao;
 
-    public Cliente(String nome, int idade, String profissao) {
+    public void setarCliente(String nome, int idade, String profissao) {
         this.id = ultimoId++;
         this.nome = nome;
         this.idade = idade;

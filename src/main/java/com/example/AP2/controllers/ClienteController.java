@@ -22,6 +22,14 @@ public class ClienteController {
         return clienteService.listarClienteService();
     }
 
+    @GetMapping("/clientes/{id}")
+    public Cliente getClienteController(@PathVariable int id) {return clienteService.listarClientesPelaIdService(id);}
+
+    @GetMapping("clientes/{idade}")
+    public List<Cliente> getClienteIdadeController(@RequestParam("idade") int idade){
+        return clienteService.listarClientesPelaIdadeService(idade);
+    }
+
     @PostMapping("/clientes")
     public Cliente setClienteController(@RequestBody Cliente cliente) {
         clienteService.setClienteService(cliente);
@@ -35,8 +43,6 @@ public class ClienteController {
 
     @PutMapping("/clientes/{id}")
     public Cliente updateClienteController(@PathVariable int id, @RequestBody Cliente cliente) {
-        clienteService.updateClienteService(cliente, id);
-        return cliente;
+        return clienteService.updateClienteService(cliente, id);
     }
-    //pesquisar metodo que devolve index de filter
 }

@@ -15,6 +15,20 @@ public class ClienteRepository {
         return clientes;
     }
 
+    public Cliente getClientesPelaIdRepository(int id) {
+        Cliente cliente = this.clientes.stream().filter(i -> i.getId() == id).findFirst().get();
+        return cliente;
+    }
+
+    public List<Cliente> getClientesPelaIdadeRepository(int idade) {
+        for (Cliente cliente : clientes) {
+            if (cliente.getIdade() == idade) {
+                return clientes;
+            }
+        }
+        return null;
+    }
+
     //POST
     public void setClientesRepository(Cliente cliente) {
         this.clientes.add(cliente);
@@ -28,8 +42,9 @@ public class ClienteRepository {
     }
 
     //PUT
-    public void updateClienteRepository(Cliente cliente, int id) {
-         cliente = this.clientes.stream().filter(i -> i.getId() == id).findFirst().get();
-        this.clientes.set(id, cliente);
+    public Cliente updateClienteRepository(int id, Cliente cliente) {
+        cliente = this.clientes.stream().filter(i -> i.getId() == id).findFirst().get();
+        cliente.setarCliente(cliente.getNome(), cliente.getIdade(), cliente.getProfissao());
+        return cliente;
     }
 }
