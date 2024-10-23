@@ -55,9 +55,16 @@ public class ClienteRepository {
 
     //PUT
     public Cliente updateClienteRepository(int id, Cliente clienteAtualizado) {
-       // cliente = this.clientes.stream().filter(i -> i.getId() == id).findFirst().get();
-        Cliente cliente = getClientesPelaIdRepository(id); //tu já tem uma função que pega pelo id
-        cliente.setarCliente(clienteAtualizado.getNome(), clienteAtualizado.getIdade(), clienteAtualizado.getProfissao());
-        return cliente;
+
+        Cliente cliente = getClientesPelaIdRepository(id);
+
+        int index = clientes.indexOf(cliente);
+        cliente.setNome(clienteAtualizado.getNome());
+        cliente.setIdade(clienteAtualizado.getIdade());
+        cliente.setProfissao(clienteAtualizado.getProfissao());
+
+        clientes.set(index,cliente);
+
+        return clienteAtualizado;
     }
 }

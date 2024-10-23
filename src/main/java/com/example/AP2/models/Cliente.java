@@ -9,14 +9,14 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class Cliente {
-    public static int ultimoId = 1;
+    public static int novoId = 1;
     private int id;
     private String nome;
     private int idade;
     private String profissao;
 
-    public void setarCliente(String nome, int idade, String profissao) {
-        this.id = ultimoId++; // só por enquanto
+    public Cliente(String nome, int idade, String profissao) {
+        this.id = novoId++;
         this.nome = nome;
         this.idade = idade;
         this.profissao = profissao;
