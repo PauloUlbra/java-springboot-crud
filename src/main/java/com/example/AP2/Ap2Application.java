@@ -20,10 +20,5 @@ public class Ap2Application {
 		SpringApplication.run(Ap2Application.class, args);
 	}
 
-	@PostConstruct
-	void listaClientes(){
-		clienteRepository.setClientesRepository(new Cliente(1,"Anderson", 21, "Estagiario"));
 
-		clienteRepository.setClientesRepository(new Cliente(2,"Anderson", 21, "Estagiario"));
-	}
 }

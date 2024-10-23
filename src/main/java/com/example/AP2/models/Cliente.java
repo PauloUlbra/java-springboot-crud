@@ -7,13 +7,13 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@AllArgsConstructor
+//@AllArgsConstructor
 public class Cliente {
     public static int novoId = 1;
-    private int id;
-    private String nome;
-    private int idade;
-    private String profissao;
+    public int id;
+    public String nome;
+    public int idade;
+    public String profissao;
 
     public Cliente(String nome, int idade, String profissao) {
         this.id = novoId++;
