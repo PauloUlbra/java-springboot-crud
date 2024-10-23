@@ -16,7 +16,7 @@ public class Cliente {
     private String profissao;
 
     public void setarCliente(String nome, int idade, String profissao) {
-        this.id = ultimoId++;
+        this.id = ultimoId++; // só por enquanto
         this.nome = nome;
         this.idade = idade;
         this.profissao = profissao;

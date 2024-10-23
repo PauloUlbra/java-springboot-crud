@@ -8,7 +8,7 @@ import java.util.List;
 
 @Repository
 public class ClienteRepository {
-    private List<Cliente> clientes = new ArrayList<>();
+    public List<Cliente> clientes = new ArrayList<>();
 
     //GET
     public List<Cliente> getClientesRepository() {
@@ -16,35 +16,48 @@ public class ClienteRepository {
     }
 
     public Cliente getClientesPelaIdRepository(int id) {
-        Cliente cliente = this.clientes.stream().filter(i -> i.getId() == id).findFirst().get();
-        return cliente;
-    }
-
-    public List<Cliente> getClientesPelaIdadeRepository(int idade) {
         for (Cliente cliente : clientes) {
-            if (cliente.getIdade() == idade) {
-                return clientes;
+            if (cliente.getId() == id) {
+                return cliente; //Se tiver com mesmo id ele retorna
             }
         }
         return null;
     }
 
+    public List<Cliente> getClientesPelaIdadeRepository(int idade) {
+        List<Cliente> clientesPelaIdade = new ArrayList<>();
+        for (Cliente cliente : clientes) {
+            if (cliente.getIdade() == idade) {
+                clientesPelaIdade.add(cliente); // Vai adicionar nessa lista que criamos, se damos um return cliente, tu tá falando que se o cliente tiver uma idade ele vai retornar
+            }
+        }
+        return clientesPelaIdade;  //Não vamos ter como válidar, então se colocar uma idade que não existe, ele vai dar status 200 OK, mas vai retornar um objeto json vazio, ou seja, = []
+    }
+
     //POST
-    public void setClientesRepository(Cliente cliente) {
-        this.clientes.add(cliente);
+    public Cliente setClientesRepository(Cliente cliente) {
+        if (getClientesPelaIdRepository(cliente.getId()) != null) { // se o id não estiver nulo, significa que ele já existe
+            return null; // então não cria
+        }
+        clientes.add(cliente); // se estiver nulo, pode criar
+        return cliente;
     }
 
     //DELETE
-    public void deleteClienteRepository(int id) {
-        Cliente cliente = this.clientes.stream().filter(i -> i.getId() == id).findFirst().get();
-
-        this.clientes.remove(cliente);
+    public Cliente deleteClienteRepository(int id) {
+        Cliente cliente = getClientesPelaIdRepository(id);
+        if (cliente != null) {
+            clientes.remove(cliente);
+            return cliente;
+        }
+        return null;
     }
 
     //PUT
-    public Cliente updateClienteRepository(int id, Cliente cliente) {
-        cliente = this.clientes.stream().filter(i -> i.getId() == id).findFirst().get();
-        cliente.setarCliente(cliente.getNome(), cliente.getIdade(), cliente.getProfissao());
+    public Cliente updateClienteRepository(int id, Cliente clienteAtualizado) {
+       // cliente = this.clientes.stream().filter(i -> i.getId() == id).findFirst().get();
+        Cliente cliente = getClientesPelaIdRepository(id); //tu já tem uma função que pega pelo id
+        cliente.setarCliente(clienteAtualizado.getNome(), clienteAtualizado.getIdade(), clienteAtualizado.getProfissao());
         return cliente;
     }
 }

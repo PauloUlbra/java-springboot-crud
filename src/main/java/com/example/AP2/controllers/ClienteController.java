@@ -25,7 +25,7 @@ public class ClienteController {
     @GetMapping("/clientes/{id}")
     public Cliente getClienteController(@PathVariable int id) {return clienteService.listarClientesPelaIdService(id);}
 
-    @GetMapping("clientes/{idade}")
+    @GetMapping("clientes/idade")
     public List<Cliente> getClienteIdadeController(@RequestParam("idade") int idade){
         return clienteService.listarClientesPelaIdadeService(idade);
     }
