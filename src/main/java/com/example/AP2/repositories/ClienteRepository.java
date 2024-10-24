@@ -39,6 +39,7 @@ public class ClienteRepository {
         if (getClientesPelaIdRepository(cliente.getId()) != null) { // se o id não estiver nulo, significa que ele já existe
             return null; // então não cria
         }
+        cliente.incrementId();
         clientes.add(cliente); // se estiver nulo, pode criar
         return cliente;
     }

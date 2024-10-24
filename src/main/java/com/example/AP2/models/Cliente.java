@@ -16,9 +16,14 @@ public class Cliente {
     public String profissao;
 
     public Cliente(String nome, int idade, String profissao) {
-        this.id = novoId++;
+        this.id = novoId;
         this.nome = nome;
         this.idade = idade;
         this.profissao = profissao;
+    }
+
+    public int incrementId()
+    {
+        return novoId++;
     }
 }
